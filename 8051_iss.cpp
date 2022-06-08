@@ -60,14 +60,14 @@ int sc_main(int argc, char *argv[])
 	Tf = sc_create_vcd_trace_file("R10945018-SystemC-EX2_Waveform");
 
 	sc_trace(Tf, clk_800, "8051_clk_(800)");
-	sc_trace(Tf, clk, "FIR_clk_(100)");
+	sc_trace(Tf, clk, "Buzzer_(100)");
 
-	sc_trace(Tf, top.port0o, "8051_value_(port0o)");
-	sc_trace(Tf, top.port3o, "8051_send_ctrl_(port3o)");
-	sc_trace(Tf, top.port2i, "FIR_calculate_ctrl_(port2i)");
-	sc_trace(Tf, top.port1i, "FIR_value_(port1i)");
+	sc_trace(Tf, top.port0o, "p_freq_(port0o)");
+	sc_trace(Tf, top.port3o, "p_st_(port3o)");
+	sc_trace(Tf, top.port2i, "p_done_(port2i)");
+	sc_trace(Tf, top.port1i, "p_wave_(port1i)");
 
-	sc_start(1500, SC_NS);
+	sc_start(23, SC_MS);
 
 	sc_close_vcd_trace_file(Tf);
 
