@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ 建置使用中檔案",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/out/${fileBasenameNoExtension}.out",
+				"./core_8051.cpp",
+				"./creg.cpp",
+				"./FIR_asic.cpp",
+				"./keyboard.cpp",
+				"./keyboardcontroller.cpp",
+				"./matrix.cpp",
+				"./op_bytes.cpp",
+				"./periph.cpp",
+				"./sram.cpp",
+				"./top.cpp",
+				"./Xram.cpp",
+				"-I.",
+				"-I/home/r10945018/EEE5009_Co-Design2022/systemc-2.3.3/include",
+				"-L/home/r10945018/EEE5009_Co-Design2022/systemc-2.3.3/lib-linux64",
+				"-lsystemc"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "編譯器: /usr/bin/g++"
+		}
+	]
+}
