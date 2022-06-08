@@ -5,6 +5,8 @@
 #include "sram.h"
 #include "Xram.h"
 #include "FIR_asic.h"
+#include "buzzer.h"
+
 
 SC_MODULE(top)
 {
@@ -36,8 +38,8 @@ SC_MODULE(top)
 	sc_signal<sc_uint<1>> xrambig_we;
 	sc_signal<sc_uint<1>> xrambig_ready;
 
-	FIR_asic *asic1;
-
+	// FIR_asic *asic1;
+	Buzzer *buzzer_A;
 	core_8051 *core;
 	sram *xreg;
 	xram *xrambig;
@@ -47,13 +49,13 @@ SC_MODULE(top)
 	SC_CTOR(top)
 	{
 
-		asic1 = new FIR_asic("FIR_asic");
-		asic1->clk(clk);
-		asic1->reset(reset);
-		asic1->A(port0o);
-		asic1->B(port3o);
-		asic1->C(port2i);
-		asic1->D(port1i);
+		buzzer_A = new Buzzer("buzzer_A");
+		buzzer_A->clk(clk);
+		buzzer_A->reset(reset);
+		buzzer_A->p_freq(port0o);
+		buzzer_A->p_st(port3o);
+		buzzer_A->p_done(port2i);
+		buzzer_A->p_wave(port1i);
 
 		core = new core_8051("core");
 		// core->clk	    ( clk	);
