@@ -16,12 +16,5 @@ int main(void){
 	P3 = 1; // Tell Buzzer to catch value.
 	while(P2 == 0); // Wait for Buzzer process frequency, if done P2 == 1. 
 	P3 = 0; // Send complete, value is not ready.
-
-	// for(i=0;i<11;i++){
-		
-	// 	P0 = i; // Value already prepared.
-	// 	P3 = 1; // Tell FIR to catch value.
-	// 	while(P2 == 0); // Wait for FIR does calculate, if done P2 == 1. 
-	// 	P3 = 0; // Send complete, value is not ready.
-	// }
+	
 }
