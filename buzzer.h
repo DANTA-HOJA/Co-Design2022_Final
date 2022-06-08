@@ -37,8 +37,9 @@ SC_MODULE(Buzzer)
         int target_freq = 0;
         int cycle = 5;
 
+        /* Pin connect in top.h */
         // buzzer_A = new Buzzer("buzzer_A");
-        // buzzer_A->clk(clk_800);
+        // buzzer_A->clk(clk);
         // buzzer_A->reset(reset);
         // buzzer_A->p_freq(port0o);
         // buzzer_A->p_st(port3o);
@@ -54,21 +55,23 @@ SC_MODULE(Buzzer)
 
             if(p_st.read() == 1){
                 
-                cycle = 5;
+                cycle = 5; // 每次新接到的頻率跑五個週期
                 target_freq = p_freq.read();
                 cout << ", target_freq = " << target_freq << " Hz";
-                full_wave = int(100*pow(10.0, 6)/target_freq);
+                full_wave = int(100*pow(10.0, 6)/target_freq); // 計算 100MHz 是 輸入頻率的幾倍，100MHz 是因為 buzzer clk 設 100MHz 
                 cout << ", full_wave = " << full_wave << " counts";
-                half_wave = int(full_wave/2);
+                half_wave = int(full_wave/2); // 半個週期，切換輸出訊號
                 cout << ", half_wave = " << half_wave << " counts" << endl;
                 while(cycle > 0){
                     cout << "cycle = " << 5-cycle << endl;
                     counter = half_wave;
+                    // 前半個週期
                     p_wave.write(1);
                     while(counter > 0){
                         counter--;
                         wait();
                     }
+                    // 前半個週期
                     counter = half_wave;
                     p_wave.write(0);
                     while(counter > 0){
