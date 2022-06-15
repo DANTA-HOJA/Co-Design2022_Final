@@ -50,7 +50,8 @@ SC_MODULE(top)
 		buzzer_A = new Buzzer("buzzer_A");
 		buzzer_A->clk(clk);
 		buzzer_A->reset(reset);
-		buzzer_A->p_freq(port0o);
+		buzzer_A->p_freq_0(port0o);
+		buzzer_A->p_freq_1(port1o);
 		buzzer_A->p_st(port3o);
 		buzzer_A->p_done(port2i);
 		buzzer_A->p_wave(port1i);

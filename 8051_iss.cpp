@@ -62,12 +62,14 @@ int sc_main(int argc, char *argv[])
 	sc_trace(Tf, clk_800, "8051_clk_(800)");
 	sc_trace(Tf, clk, "Buzzer_(100)");
 
-	sc_trace(Tf, top.port0o, "p_freq_(port0o)");
+	sc_trace(Tf, top.port0o, "p_freq_0_(port0o)");
+	sc_trace(Tf, top.port1o, "p_freq_1_(port1o)");
 	sc_trace(Tf, top.port3o, "p_st_(port3o)");
 	sc_trace(Tf, top.port2i, "p_done_(port2i)");
-	sc_trace(Tf, top.port1i, "p_wave_(port1i)");
 
-	sc_start(23, SC_MS);
+	sc_trace(Tf, top.buzzer_A -> p_wave, "p_wave");
+
+	sc_start(15, SC_MS);
 
 	sc_close_vcd_trace_file(Tf);
 
