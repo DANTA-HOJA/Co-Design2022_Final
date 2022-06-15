@@ -10,8 +10,8 @@ SC_MODULE(Buzzer)
 	sc_in_clk			    clk;
 	sc_in<sc_uint<1> >		reset;
     // generate frequency = P0 + P1*256 => concat two 8 bit output pin
-	sc_in<sc_uint<8> >      p_freq_0;   // P0: 8051 -> buzzer , Prepared value which needs calculate. (port0o)
-    sc_in<sc_uint<8> >      p_freq_1;   // P1: 8051 -> buzzer , Prepared value which needs calculate. (port1o)
+	sc_in<sc_uint<8> >      p_freq_0;   // P0: 8051 -> buzzer , frequency wants to generate. (port0o)
+    sc_in<sc_uint<8> >      p_freq_1;   // P1: 8051 -> buzzer , frequency wants to generate. (port1o)
 	sc_in<sc_uint<8> >      p_st;  	    // P3: 8051 -> buzzer , Tell buzzer can catch value. (port3o)
 	sc_out<sc_uint<8> >     p_done;     // P2: buzzer -> 8051, buzzer calculate complete or not. (port2i)
 	sc_out<sc_uint<8> >     p_wave;     // P1: output_signal (port1i)
