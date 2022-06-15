@@ -9,18 +9,16 @@ SC_MODULE(Buzzer)
 {
 	sc_in_clk			    clk;
 	sc_in<sc_uint<1> >		reset;
-	sc_in<sc_uint<8> >      p_freq;  // P0: 8051 -> FIR, Prepared value which needs calculate. (port0o)
-	sc_in<sc_uint<8> >      p_st;  	// P3: 8051 -> FIR, Tell FIR can catch value. (port3o)
-	sc_out<sc_uint<8> >     p_done;  	// P2: FIR -> 8051, FIR calculate complete or not. (port2i)
-	sc_out<sc_uint<8> >     p_wave;  	// P1: FIR -> 8051, FIR send result value back. (port1i)
+	sc_in<sc_uint<8> >      p_freq;   // P0: 8051 -> buzzer , Prepared value which needs calculate. (port0o)
+	sc_in<sc_uint<8> >      p_st;  	  // P3: 8051 -> buzzer , Tell buzzer can catch value. (port3o)
+	sc_out<sc_uint<8> >     p_done;   // P2: buzzer -> 8051, buzzer calculate complete or not. (port2i)
+	sc_out<sc_uint<8> >     p_wave;   // P1: buzzer -> 8051, buzzer send result value back. (port1i)
     sc_signal<bool> rst;
 
 	SC_CTOR(Buzzer)
 	{
         rst = true;
-		/* switch 1-cycle or N-cycle. */
 		SC_CTHREAD(freq_generator, clk.pos());
-		// SC_CTHREAD(FIR_N, clk.pos());
 	};
 
     void freq_generator() {

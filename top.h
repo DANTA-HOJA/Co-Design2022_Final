@@ -4,7 +4,6 @@
 #include "core_8051.h"
 #include "sram.h"
 #include "Xram.h"
-#include "FIR_asic.h"
 #include "buzzer.h"
 
 
@@ -38,7 +37,6 @@ SC_MODULE(top)
 	sc_signal<sc_uint<1>> xrambig_we;
 	sc_signal<sc_uint<1>> xrambig_ready;
 
-	// FIR_asic *asic1;
 	Buzzer *buzzer_A;
 	core_8051 *core;
 	sram *xreg;
