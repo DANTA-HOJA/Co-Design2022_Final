@@ -57,7 +57,7 @@ int sc_main(int argc, char *argv[])
 	///////////////////////////////////Start Test
 
 	sc_trace_file *Tf;
-	Tf = sc_create_vcd_trace_file("R10945018-SystemC-EX2_Waveform");
+	Tf = sc_create_vcd_trace_file("SystemC_Final_Waveform");
 
 	sc_trace(Tf, clk_800, "8051_clk_(800)");
 	sc_trace(Tf, clk, "Buzzer_(100)");
@@ -69,7 +69,11 @@ int sc_main(int argc, char *argv[])
 
 	sc_trace(Tf, top.buzzer_A -> p_wave, "p_wave");
 
-	sc_start(15, SC_MS);
+	// run with "./8051_code/Final_8051_code_MultiFreq.t", output = 440, 550, 660 Hz
+	// sc_start(15, SC_MS);
+
+	// run with "./8051_code/Final_8051_code_C5_G5.t", output = C5(523), D5(587), E5(659), F5(698), G5(784) Hz 
+	sc_start(22, SC_MS);
 
 	sc_close_vcd_trace_file(Tf);
 
