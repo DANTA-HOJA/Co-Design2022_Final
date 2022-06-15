@@ -13,7 +13,7 @@
 				"${fileDirname}/out/${fileBasenameNoExtension}.out",
 				"./core_8051.cpp",
 				"./creg.cpp",
-				"./FIR_asic.cpp",
+				"./buzzer.cpp",
 				"./keyboard.cpp",
 				"./keyboardcontroller.cpp",
 				"./matrix.cpp",
